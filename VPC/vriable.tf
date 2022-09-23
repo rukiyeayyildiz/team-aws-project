@@ -17,7 +17,7 @@ variable "cidr" {
 }
 
 variable "tags" {
-  type        = map(any)
+  type        = list(any)
   default     = "dev"
   description = "provide a tag for VPC"
 }
