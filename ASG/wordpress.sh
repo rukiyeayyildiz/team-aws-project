@@ -3,8 +3,8 @@ set -xe
 sudo yum install httpd php php-mysql*  wget  -y
 sudo systemctl restart httpd
 sudo systemctl enable httpd
-sudo wget  https://wordpress.org/wordpress-6.0.2.tar.gz
-sudo tar -xf wordpress-6.0.2.tar.gz -C /var/www/html/
+sudo wget  https://wordpress.org/wordpress-4.0.32.tar.gz
+sudo tar -xf wordpress-4.0.32.tar.gz -C /var/www/html/
 sudo mv /var/www/html/wordpress/* /var/www/html/
 sudo systemctl restart httpd
 sudo chown -R apache:apache /var/www/html/
