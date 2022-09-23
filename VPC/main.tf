@@ -4,7 +4,7 @@ module "vpc" {
   region  = "${var.region}"
 
   name                  = var.vpc_name
-  cidr_block                = "${var.cidr_block}
+  cidr_block                = "${var.cidr_block}"
 
   azs                   = [
           "${var.region}a", 
