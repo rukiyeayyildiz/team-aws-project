@@ -1,4 +1,4 @@
-data "terraform_remote_state" "vpc" {
+data "terraform_remote_state" "remote" {
   backend = "s3"
   config = {
     bucket = "malik-terraform-state-bucket"
@@ -10,5 +10,5 @@ data "terraform_remote_state" "vpc" {
 
 
 output all {
-    value = data.terraform_remote_state.vpc.outputs.*
+    value = data.terraform_remote_state.remote.outputs.*
 }
