@@ -58,6 +58,6 @@ jobs:
 
 
        - name:   destroy 
-        working-directory: VPC
-        run: |
-          terraform destroy	-var-file envs/ohio.tfvars --auto-approve         
+         working-directory: VPC
+         run: |
+           terraform destroy	-var-file envs/ohio.tfvars --auto-approve         
