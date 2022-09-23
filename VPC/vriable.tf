@@ -17,8 +17,8 @@ variable "cidr" {
 }
 
 variable "tags" {
-  type        = string
-  default     = "dev"
+  type        = map(any)
+  default     = {dev}
   description = "provide a tag for VPC"
 }
 
