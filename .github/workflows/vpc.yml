@@ -51,13 +51,16 @@ jobs:
       #     terraform plan -var-file envs/ohio.tfvars 
 
 
+      # # Runs a set of commands using the runners shell
       # - name:   Apply # Destroy
       #   working-directory: VPC
       #   run: |
       #     terraform apply	-var-file envs/ohio.tfvars --auto-approve
 
 
-       - name:   destroy 
-         working-directory: VPC
-         run: |
-           terraform destroy	-var-file envs/ohio.tfvars --auto-approve         
+
+      # Runs a set of commands using the runners shell
+      - name:   Destroy
+        working-directory: VPC
+        run: |
+          terraform destroy	-var-file envs/ohio.tfvars --auto-approve
