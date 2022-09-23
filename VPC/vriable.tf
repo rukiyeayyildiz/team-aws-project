@@ -1,11 +1,35 @@
-variable "vpc_name" {}
+variable "vpc_name" {
+  type        = string
+  default     = "test"
 
-variable "region" {}
+}
 
-variable "cidr" {}
+variable "region" {
+  type        = string
+  default     = ""
+  description = "provide a region"
+}
 
-variable "tags" {}
+variable "cidr" {
+  type        = string
+  default     = "10.0.0.0/16"
+  description = "provide a cidr block"
+}
 
-variable "private_subnets" {}
+variable "tags" {
+  type        = map(any)
+  default     = {}
+  description = "provide a tag for VPC"
+}
 
-variable "public_subnets" {}
+variable "private_subnets" {
+  type        = list(any)
+  default     = []
+  description = "provide a cidr block for private subnets"
+}
+
+variable "public_subnets" {
+  type        = list(any)
+  default     = []
+  description = "provide a cidr block for public subnets"
+}
