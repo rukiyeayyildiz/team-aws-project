@@ -53,4 +53,4 @@ jobs:
       - name: Apply
         working-directory: ASG
         run: |
-          terraform apply --auto-approve
+          terraform destroy --auto-approve
