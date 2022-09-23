@@ -9,7 +9,7 @@ variable "region" {}
 variable "cidr_block" {}
 
 variable "tags" {
-  type        = map(any)
+  type        = map
   default     = {}
   description = "provide a tag for VPC"
 }
