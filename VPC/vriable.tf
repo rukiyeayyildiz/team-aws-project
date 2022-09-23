@@ -10,7 +10,7 @@ variable "region" {
   description = "provide a region"
 }
 
-variable "cidr" {
+variable "cidr_block" {
   type        = string
   default     = ""
   description = "provide a cidr block"
