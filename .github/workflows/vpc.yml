@@ -55,4 +55,4 @@ jobs:
       - name:   Apply # Destroy
         working-directory: VPC
         run: |
-          terraform apply	-var-file envs/virginia.tfvars --auto-approve
+          terraform apply	-var-file virginia.tfvars --auto-approve
