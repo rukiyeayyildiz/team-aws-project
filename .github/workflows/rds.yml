@@ -2,7 +2,7 @@
 
 name: RDS Continuous Deployment
 
-Controls when the workflow will run
+# Controls when the workflow will run
 on:
   workflow_run:
     workflows: ["VPC Continuous Deployment"]
