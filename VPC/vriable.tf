@@ -12,7 +12,7 @@ variable "region" {
 
 variable "cidr" {
   type        = string
-  default     = "10.0.0.0/16"
+  default     = ""
   description = "provide a cidr block"
 }
 
@@ -24,12 +24,12 @@ variable "tags" {
 
 variable "private_subnets" {
   type        = list(any)
-  default     = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+  default     = []
   description = "provide a cidr block for private subnets"
 }
 
 variable "public_subnets" {
   type        = list(any)
-  default     = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+  default     = []
   description = "provide a cidr block for public subnets"
 }
