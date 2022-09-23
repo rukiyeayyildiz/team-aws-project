@@ -48,7 +48,7 @@ jobs:
       - name: Plan
         working-directory: VPC
         run: |
-          terraform plan -var-file envs/ohio.tfvars --auto-approve
+          terraform plan -var-file envs/ohio.tfvars 
 
 
       # Runs a set of commands using the runners shell
