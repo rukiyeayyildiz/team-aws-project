@@ -51,7 +51,7 @@ jobs:
 
 
       # Runs a set of commands using the runners shell
-      - name: Destroy
+      - name:   Apply # Destroy
         working-directory: VPC
         run: |
-          terraform destroy --auto-approve
+          terraform apply --auto-approve
