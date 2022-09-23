@@ -3,12 +3,13 @@
 name: VPC Continuous Deployment
 
 # Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+
+# on:
+#   # Triggers the workflow on push or pull request events but only for the "main" branch
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -54,4 +55,4 @@ jobs:
       - name:   Apply # Destroy
         working-directory: VPC
         run: |
-          terraform destroy	 --auto-approve
+          terraform apply	-var-file envs/virginia.tfvars --auto-approve
