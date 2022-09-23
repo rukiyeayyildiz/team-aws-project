@@ -4,17 +4,9 @@ variable "vpc_name" {
 
 }
 
-variable "region" {
-  type        = string
-  default     = ""
-  description = "provide a region"
-}
+variable "region" {}
 
-variable "cidr" {
-  type        = string
-  default     = ""
-  description = "provide a cidr block"
-}
+variable "cidr_block" {}
 
 variable "tags" {
   type        = map(any)

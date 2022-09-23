@@ -1,8 +1,10 @@
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
+  region  = "${var.region}"
+
   name                  = var.vpc_name
-  cidr                  = var.cidr
+  cidr_block                = "${var.cidr_block}
 
   azs                   = [
           "${var.region}a", 
@@ -11,8 +13,8 @@ module "vpc" {
     ]
   
   
-  private_subnets       = var.private_subnets
-  public_subnets        = var.public_subnets
+  private_subnets       = "${var.private_subnets}"
+  public_subnets        = "${var.public_subnets}"
 
   enable_nat_gateway    = false
   enable_vpn_gateway    = false
