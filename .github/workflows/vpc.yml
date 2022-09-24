@@ -83,18 +83,18 @@ jobs:
           terraform plan -var-file envs/ohio.tfvars 
 
 
-      # - name:   Destroy 
-      #   working-directory: VPC
-      #   run: |
-      #     terraform destroy	-var-file envs/ohio.tfvars --auto-approve
-
-
-
-
-      - name:   Apply
+      - name:   Destroy 
         working-directory: VPC
         run: |
-          terraform apply	-var-file envs/ohio.tfvars --auto-approve
+          terraform destroy	-var-file envs/ohio.tfvars --auto-approve
+
+
+
+
+      # - name:   Apply
+      #   working-directory: VPC
+      #   run: |
+      #     terraform apply	-var-file envs/ohio.tfvars --auto-approve
 
 
 
