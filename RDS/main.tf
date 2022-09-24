@@ -73,10 +73,10 @@ resource "aws_rds_cluster_instance" "wordpress_db" {
 
 
 
-resource "aws_route53_record" "wordpressdb" {
-  zone_id = var.zone_id
-  name    = "wordpressdb.${var.domain_name}"
-  type    = "CNAME"
-  ttl     = 300
-  records = [aws_rds_cluster.wordpress_db.address]
-}
+# resource "aws_route53_record" "wordpressdb" {
+#   zone_id = var.zone_id
+#   name    = "wordpressdb.${var.domain_name}"
+#   type    = "CNAME"
+#   ttl     = 300
+#   records = [aws_rds_cluster.wordpress_db.address]
+# }
