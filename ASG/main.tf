@@ -121,7 +121,7 @@ module "alb" {
   tags = var.tags
 }
 
-resource "aws_route53_record" "wordpressdb" {
+resource "aws_route53_record" "wordpress_db" {
   zone_id = var.zone_id
   name    = "wordpress.${var.domain_name}"
   type    = "CNAME"

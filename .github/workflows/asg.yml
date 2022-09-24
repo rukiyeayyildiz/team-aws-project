@@ -3,11 +3,11 @@
 name: ASG Continuous Deployment
 
 # Controls when the workflow will run
-# on:
-#   workflow_run:
-#     workflows: ["RDS Continuous Deployment"]
-#     types:
-#       - completed
+on:
+  workflow_run:
+    workflows: ["RDS Continuous Deployment"]
+    types:
+      - completed
 
 # on:
 #   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -50,15 +50,21 @@ jobs:
           terraform workspace select dev || terraform workspace new dev
          
 
+      # Runs a set of commands using the runners shell
+      - name: Plan
+        working-directory: ASG
+        run: |
+          terraform plan
+
+
       # # Runs a set of commands using the runners shell
-      # - name: Plan
+      # - name: Destroy
       #   working-directory: ASG
       #   run: |
-      #     terraform plan
-
+      #     terraform destroy	 --auto-approve
 
       # Runs a set of commands using the runners shell
       - name: Apply
         working-directory: ASG
         run: |
-          terraform destroy	 --auto-approve
+          terraform apply	 --auto-approve      
