@@ -87,7 +87,7 @@ resource "aws_route53_record" "reader3" {
   type    = "CNAME"
   ttl     = 300
   records = [aws_rds_cluster_instance.wordpress_db.reader_endpoint]
-
+}
 
 
 
