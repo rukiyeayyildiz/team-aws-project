@@ -1,6 +1,6 @@
-# output "address" {
-#   value = aws_rds_cluster.wordpress_db.address
-# }
+output "address" {
+  value = aws_rds_cluster_instance.wordpress_db.address
+}
 # output "writer_aws_rds_endpoint" {
 #   value = "Writer ${aws_rds_cluster.wordpress_db.endpoint}"
 # }
