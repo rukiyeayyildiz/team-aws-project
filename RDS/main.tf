@@ -59,7 +59,7 @@ resource "aws_route53_record" "writer" {
   name    = "writer.${var.domain_name}"
   type    = "CNAME"
   ttl     = 300
-  records = [aws_rds_cluster.wordpress_db.address]
+  records = [aws_rds_cluster_instance.wordpress_db.address]
 }
 
 
