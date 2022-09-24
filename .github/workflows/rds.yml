@@ -2,19 +2,19 @@
 
 name: RDS Continuous Deployment
 
-# Controls when the workflow will run
-# on:
-#   workflow_run:
-#     workflows: ["VPC Continuous Deployment"]
-#     types:
-#       - completed
 
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_run:
+    workflows: ["VPC Continuous Deployment"]
+    types:
+      - completed
+
+# on:
+#   # Triggers the workflow on push or pull request events but only for the "main" branch
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
 
   # Allows you to run this workflow manually from the Actions tab
@@ -50,21 +50,80 @@ jobs:
           terraform workspace select dev || terraform workspace new dev
          
 
-      # Runs a set of commands using the runners shell
+
+      ##################################################  VIRGINIA REGION  ############################################################################
+
+
+
+
+      # - name: Plan
+      #   working-directory: RDS
+      #   run: |
+      #     terraform plan -var-file envs/virginia.tfvars 
+
+
+
+      # - name:   Destroy 
+      #   working-directory: RDS
+      #   run: |
+      #     terraform destroy	-var-file envs/virginia.tfvars --auto-approve
+
+
+
+
+      # - name:   Apply
+      #   working-directory: RDS
+      #   run: |
+      #     terraform apply	-var-file envs/virginia.tfvars --auto-approve
+
+
+
+
+
+     ###################################################    OHIO REGION   #############################################################################
+
+
       - name: Plan
         working-directory: RDS
         run: |
-          terraform plan
+          terraform plan -var-file envs/ohio.tfvars 
 
 
-      # Runs a set of commands using the runners shell
-      - name: Destroy
-        working-directory: RDS
-        run: |
-          terraform destroy --auto-approve
-
-      # # Runs a set of commands using the runners shell
-      # - name: Apply
+      # - name:   Destroy 
       #   working-directory: RDS
       #   run: |
-      #     terraform apply --auto-approve         
+      #     terraform destroy	-var-file envs/ohio.tfvars --auto-approve
+
+
+
+
+      - name:   Apply
+        working-directory: RDS
+        run: |
+          terraform apply	-var-file envs/ohio.tfvars --auto-approve
+
+
+
+
+      ###################################################    OREGON REGION   #########################################################################
+
+
+      # - name: Plan
+      #   working-directory: RDS
+      #   run: |
+      #     terraform plan -var-file envs/oregon.tfvars 
+
+
+
+      # - name:   Destroy 
+      #   working-directory: RDS
+      #   run: |
+      #     terraform destroy	-var-file envs/oregon.tfvars --auto-approve
+
+
+
+
+      # - name:   Apply
+      #   working-directory: RDS
+      #   run: |
+      #     terraform apply	-var-file envs/oregon.tfvars --auto-approve 

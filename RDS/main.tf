@@ -32,22 +32,22 @@ resource "aws_security_group_rule" "mysql" {
 
 
 resource "aws_rds_cluster" "wordpress_db" {
-  vpc_security_group_ids = [aws_security_group.mysql.id]
-  db_subnet_group_name   = aws_db_subnet_group.default.name
+  vpc_security_group_ids  = [aws_security_group.mysql.id]
+  db_subnet_group_name    = aws_db_subnet_group.default.name
   cluster_identifier      = "aurora-cluster"
   engine                  = "aurora"
   engine_version          = "5.6.10a"
-  database_name           = "mydb"
-  master_username         = "foo"
-  master_password         = "12345678"
-  backup_retention_period = 5
-  preferred_backup_window = "07:00-09:00"
-  skip_final_snapshot    = true
+  database_name           = var.database_name
+  master_username         = var.master_username
+  master_password         = var.master_password
+  backup_retention_period = var.backup_retention_period
+  preferred_backup_window = var.preferred_backup_window
+  skip_final_snapshot     = var.skip_final_snapshot
 }
 
 resource "aws_rds_cluster_instance" "wordpress_db" {
   cluster_identifier = aws_rds_cluster.wordpress_db.id
-  instance_class     = "db.t2.small"
+  instance_class     = var.instance_class
   engine             = aws_rds_cluster.wordpress_db.engine
   engine_version     = aws_rds_cluster.wordpress_db.engine_version
 }

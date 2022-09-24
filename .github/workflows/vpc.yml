@@ -2,7 +2,7 @@
 
 name: VPC Continuous Deployment
 
-# Controls when the workflow will run
+
 
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -44,23 +44,80 @@ jobs:
           terraform workspace select dev || terraform workspace new dev
          
 
-      # Runs a set of commands using the runners shell
+
+      ##################################################  VIRGINIA REGION  ############################################################################
+
+
+
+
       # - name: Plan
       #   working-directory: VPC
       #   run: |
-      #     terraform plan -var-file envs/ohio.tfvars 
-
-
-      # Runs a set of commands using the runners shell
-      - name:   Destroy 
-        working-directory: VPC
-        run: |
-          terraform destroy	-var-file envs/virginia.tfvars --auto-approve
+      #     terraform plan -var-file envs/virginia.tfvars 
 
 
 
-      # # # Runs a set of commands using the runners shell
+      # - name:   Destroy 
+      #   working-directory: VPC
+      #   run: |
+      #     terraform destroy	-var-file envs/virginia.tfvars --auto-approve
+
+
+
+
       # - name:   Apply
       #   working-directory: VPC
       #   run: |
       #     terraform apply	-var-file envs/virginia.tfvars --auto-approve
+
+
+
+
+
+     ###################################################    OHIO REGION   #############################################################################
+
+
+      - name: Plan
+        working-directory: VPC
+        run: |
+          terraform plan -var-file envs/ohio.tfvars 
+
+
+      # - name:   Destroy 
+      #   working-directory: VPC
+      #   run: |
+      #     terraform destroy	-var-file envs/ohio.tfvars --auto-approve
+
+
+
+
+      - name:   Apply
+        working-directory: VPC
+        run: |
+          terraform apply	-var-file envs/ohio.tfvars --auto-approve
+
+
+
+
+      ###################################################    OREGON REGION   #########################################################################
+
+
+      # - name: Plan
+      #   working-directory: VPC
+      #   run: |
+      #     terraform plan -var-file envs/oregon.tfvars 
+
+
+
+      # - name:   Destroy 
+      #   working-directory: VPC
+      #   run: |
+      #     terraform destroy	-var-file envs/oregon.tfvars --auto-approve
+
+
+
+
+      # - name:   Apply
+      #   working-directory: VPC
+      #   run: |
+      #     terraform apply	-var-file envs/oregon.tfvars --auto-approve     

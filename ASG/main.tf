@@ -65,7 +65,7 @@ module "asg" {
   source = "terraform-aws-modules/autoscaling/aws"
 
   # Autoscaling group
-  name                      = "example-asg"
+  name                      = var.name
   security_groups           = [aws_security_group.web.id]
   min_size                  = 1
   max_size                  = 1
