@@ -59,7 +59,7 @@ resource "aws_route53_record" "writer" {
   name    = "writer.${var.domain_name}"
   type    = "CNAME"
   ttl     = 300
-  records = [aws_rds_cluster_instance.wordpress_db.endpoint]
+  records = [aws_rds_cluster.wordpress_db.endpoint]
 }
 
 
@@ -68,7 +68,7 @@ resource "aws_route53_record" "reader1" {
   name    = "reader1.${var.domain_name}"
   type    = "CNAME"
   ttl     = 300
-  records = [aws_rds_cluster_instance.wordpress_db.reader_endpoint]
+  records = [aws_rds_cluster.wordpress_db.reader_endpoint]
 }
 
 
@@ -77,7 +77,7 @@ resource "aws_route53_record" "reader2" {
   name    = "reader2.${var.domain_name}"
   type    = "CNAME"
   ttl     = 300
-  records = [aws_rds_cluster_instance.wordpress_db.reader_endpoint]
+  records = [aws_rds_cluster.wordpress_db.reader_endpoint]
 }
 
 
@@ -86,7 +86,7 @@ resource "aws_route53_record" "reader3" {
   name    = "reader3.${var.domain_name}"
   type    = "CNAME"
   ttl     = 300
-  records = [aws_rds_cluster_instance.wordpress_db.reader_endpoint]
+  records = [aws_rds_cluster.wordpress_db.reader_endpoint]
 }
 
 
