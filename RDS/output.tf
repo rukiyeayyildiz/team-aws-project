@@ -1,3 +1,3 @@
 output "address" {
-  value = aws_db_instance.default.address
+  value = aws_rds_cluster.wordpress_db.address
 }
