@@ -63,8 +63,8 @@ jobs:
       #   run: |
       #     terraform destroy --auto-approve
 
-      # # Runs a set of commands using the runners shell
-      # - name: Apply
-      #   working-directory: RDS
-      #   run: |
-      #     terraform apply --auto-approve         
+      # Runs a set of commands using the runners shell
+      - name: Apply
+        working-directory: RDS
+        run: |
+          terraform apply --auto-approve         
