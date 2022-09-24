@@ -6,7 +6,7 @@ variable "vpc_name" {
 
 variable "region" {}
 
-variable "cidr_block" {}
+variable "cidr" {}
 
 variable "tags" {
   type        = map
