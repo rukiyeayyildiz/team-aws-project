@@ -50,18 +50,18 @@ jobs:
           terraform workspace select dev || terraform workspace new dev
          
 
-      # # Runs a set of commands using the runners shell
-      # - name: Plan
-      #   working-directory: RDS
-      #   run: |
-      #     terraform plan
-
-
       # Runs a set of commands using the runners shell
-      - name: Destroy
+      - name: Plan
         working-directory: RDS
         run: |
-          terraform destroy --auto-approve
+          terraform plan
+
+
+      # # Runs a set of commands using the runners shell
+      # - name: Destroy
+      #   working-directory: RDS
+      #   run: |
+      #     terraform destroy --auto-approve
 
       # # Runs a set of commands using the runners shell
       # - name: Apply

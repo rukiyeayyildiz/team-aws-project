@@ -56,11 +56,37 @@ resource "aws_rds_cluster_instance" "wordpress_db" {
 
 resource "aws_route53_record" "writer" {
   zone_id = var.zone_id
-  name    = "wordpress_db.${var.domain_name}"
+  name    = "writer.${var.domain_name}"
   type    = "CNAME"
   ttl     = 300
   records = [aws_rds_cluster_instance.wordpress_db.endpoint]
 }
+
+
+resource "aws_route53_record" "reader1" {
+  zone_id = var.zone_id
+  name    = "reader1.${var.domain_name}"
+  type    = "CNAME"
+  ttl     = 300
+  records = [aws_rds_cluster_instance.wordpress_db.reader_endpoint]
+}
+
+
+resource "aws_route53_record" "reader2" {
+  zone_id = var.zone_id
+  name    = "reader2.${var.domain_name}"
+  type    = "CNAME"
+  ttl     = 300
+  records = [aws_rds_cluster_instance.wordpress_db.reader_endpoint]
+}
+
+
+resource "aws_route53_record" "reader3" {
+  zone_id = var.zone_id
+  name    = "reader3.${var.domain_name}"
+  type    = "CNAME"
+  ttl     = 300
+  records = [aws_rds_cluster_instance.wordpress_db.reader_endpoint]
 
 
 
