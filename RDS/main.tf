@@ -49,8 +49,8 @@ resource "aws_rds_cluster" "wordpress_db" {
   vpc_security_group_ids = [aws_security_group.mysql.id]
   db_subnet_group_name   = aws_db_subnet_group.default.name
   cluster_identifier      = "aurora-cluster"
-  engine                  = "aurora-mysql"
-  engine_version          = "5.7.mysql_aurora.2.03.2"
+  engine                  = "aurora"
+  engine_version          = "5.6.10a"
   database_name           = "mydb"
   master_username         = "foo"
   master_password         = "bar"
