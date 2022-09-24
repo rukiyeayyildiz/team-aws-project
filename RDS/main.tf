@@ -61,7 +61,7 @@ resource "aws_rds_cluster" "wordpress_db" {
 
 resource "aws_rds_cluster_instance" "wordpress_db" {
   cluster_identifier = aws_rds_cluster.wordpress_db.id
-  instance_class     = "db.serverless"
+  instance_class     = "db.t2.small"
   engine             = aws_rds_cluster.wordpress_db.engine
   engine_version     = aws_rds_cluster.wordpress_db.engine_version
 }
