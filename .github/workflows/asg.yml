@@ -3,11 +3,11 @@
 name: ASG Continuous Deployment
 
 
-# on:
-#   workflow_run:
-#     workflows: ["RDS Continuous Deployment"]
-#     types:
-#       - completed
+on:
+  workflow_run:
+    workflows: ["RDS Continuous Deployment"]
+    types:
+      - completed
 
 # on:
 #   # Triggers the workflow on push or pull request events but only for the "main" branch
@@ -83,10 +83,10 @@ jobs:
      ###################################################    OHIO REGION   #############################################################################
 
 
-      # - name: Plan
-      #   working-directory: ASG
-      #   run: |
-      #     terraform plan -var-file envs/ohio.tfvars 
+      - name: Plan
+        working-directory: ASG
+        run: |
+          terraform plan -var-file envs/ohio.tfvars 
 
 
       # - name:   Destroy 
@@ -97,10 +97,10 @@ jobs:
 
 
 
-      # - name:   Apply
-      #   working-directory: ASG
-      #   run: |
-      #     terraform apply	-var-file envs/ohio.tfvars --auto-approve
+      - name:   Apply
+        working-directory: ASG
+        run: |
+          terraform apply	-var-file envs/ohio.tfvars --auto-approve
 
 
 
