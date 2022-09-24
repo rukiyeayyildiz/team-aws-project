@@ -53,7 +53,7 @@ resource "aws_rds_cluster" "wordpress_db" {
   engine_version          = "5.6.10a"
   database_name           = "mydb"
   master_username         = "foo"
-  master_password         = "bar"
+  master_password         = "12345678"
   backup_retention_period = 5
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot    = true
