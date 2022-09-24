@@ -67,9 +67,9 @@ module "asg" {
   # Autoscaling group
   name                      = var.name
   security_groups           = [aws_security_group.web.id]
-  min_size                  = 1
-  max_size                  = 1
-  desired_capacity          = 1
+  min_size                  = var.min_size
+  max_size                  = var.max_size
+  desired_capacity          = var.desired_capacity
   wait_for_capacity_timeout = 0
   health_check_type         = "EC2"
   vpc_zone_identifier       = data.terraform_remote_state.remote.outputs.public_subnets
