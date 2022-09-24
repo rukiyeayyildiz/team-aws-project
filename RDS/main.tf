@@ -30,20 +30,6 @@ resource "aws_security_group_rule" "mysql" {
 }
 
 
-# resource "aws_db_instance" "default" {
-#   vpc_security_group_ids = [aws_security_group.mysql.id]
-#   allocated_storage      = 10
-#   db_name                = "mydb"
-#   engine                 = "mysql"
-#   engine_version         = "5.7"
-#   instance_class         = "db.t3.micro"
-#   username               = "foo"
-#   password               = "foobarbaz"
-#   parameter_group_name   = "default.mysql5.7"
-#   skip_final_snapshot    = true
-#   db_subnet_group_name   = aws_db_subnet_group.default.name
-#   publicly_accessible    = true
-# }
 
 resource "aws_rds_cluster" "wordpress_db" {
   vpc_security_group_ids = [aws_security_group.mysql.id]
@@ -68,7 +54,13 @@ resource "aws_rds_cluster_instance" "wordpress_db" {
 
 
 
-
+resource "aws_route53_record" "writer" {
+  zone_id = var.zone_id
+  name    = "writer.${var.domain_name}"
+  type    = "CNAME"
+  ttl     = 300
+  records = [aws_rds_cluster.wordpress_db.address]
+}
 
 
 
