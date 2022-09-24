@@ -57,14 +57,14 @@ jobs:
       #     terraform plan
 
 
-      # # Runs a set of commands using the runners shell
-      # - name: Destroy
-      #   working-directory: RDS
-      #   run: |
-      #     terraform destroy --auto-approve
-
       # Runs a set of commands using the runners shell
-      - name: Apply
+      - name: Destroy
         working-directory: RDS
         run: |
-          terraform apply --auto-approve         
+          terraform destroy --auto-approve
+
+      # # Runs a set of commands using the runners shell
+      # - name: Apply
+      #   working-directory: RDS
+      #   run: |
+      #     terraform apply --auto-approve         
