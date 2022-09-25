@@ -31,6 +31,35 @@ resource "aws_security_group_rule" "mysql" {
 
 
 
+resource "aws_security_group" "redis" {
+  name        = "mysql"
+  description = "Allow mysql inbound traffic"
+  vpc_id      = data.terraform_remote_state.remote.outputs.vpc_id
+
+  egress {
+    from_port        = 0
+    to_port          = 0
+    protocol         = "-1"
+    cidr_blocks      = ["0.0.0.0/0"]
+    ipv6_cidr_blocks = ["::/0"]
+  }
+
+  tags = var.tags
+}
+
+resource "aws_security_group_rule" "redis" {
+  type              = "ingress"
+  from_port         = 6379
+  to_port           = 6379
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.mysql.id
+}
+
+
+
+
+
 resource "aws_rds_cluster" "wordpress_db" {
   vpc_security_group_ids  = [aws_security_group.mysql.id]
   db_subnet_group_name    = aws_db_subnet_group.default.name
@@ -74,7 +103,6 @@ resource "aws_rds_cluster_instance" "wordpress_db" {
 # }
 
 
-
 resource "aws_route53_record" "writer" {
   zone_id = var.zone_id
   name    = "writer.${var.domain_name}"
@@ -111,11 +139,24 @@ resource "aws_route53_record" "reader3" {
 }
 
 
+resource "aws_elasticache_cluster" "redis" {
+  security_group_ids   = [aws_security_group.redis.id]
+  subnet_group_name    = aws_db_subnet_group.default.name
 
-# resource "aws_route53_record" "wordpressdb" {
-#   zone_id = var.zone_id
-#   name    = "wordpressdb.${var.domain_name}"
-#   type    = "CNAME"
-#   ttl     = 300
-#   records = [aws_rds_cluster.wordpress_db.address]
-# }
+  cluster_id           = "cluster-redis"
+  engine               = "redis"
+  node_type            = "cache.t1.micro"
+  num_cache_nodes      = 1
+  parameter_group_name = "default.redis3.2"
+  engine_version       = "3.2.10"
+  port                 = 6379
+}
+
+resource "aws_route53_record" "redis" {
+  zone_id = var.zone_id
+  name    = "redis.${var.domain_name}"
+  type    = "CNAME"
+  ttl     = 300
+  records = [aws_elasticache_cluster.redis.cluster_address]
+}
+
