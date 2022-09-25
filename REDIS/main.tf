@@ -26,7 +26,7 @@ resource "aws_security_group_rule" "redis" {
   to_port           = 6379
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = aws_security_group.mysql.id
+  security_group_id = aws_security_group.redis.id
 }
 
 resource "aws_elasticache_cluster" "redis" {
