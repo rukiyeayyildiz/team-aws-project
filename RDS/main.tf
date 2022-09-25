@@ -4,11 +4,12 @@ resource "aws_db_subnet_group" "default" {
   tags = var.tags
 }
 
-resource "aws_db_subnet_group" "redis" {
+resource "aws_elasticache_subnet_group" "redis" {
   name       = "redis"
   subnet_ids = data.terraform_remote_state.remote.outputs.private_subnets
   tags = var.tags
 }
+
 
 resource "aws_security_group" "mysql" {
   name        = "mysql"
@@ -147,7 +148,7 @@ resource "aws_route53_record" "reader3" {
 
 resource "aws_elasticache_cluster" "redis" {
   security_group_ids   = [aws_security_group.redis.id]
-  subnet_group_name    = aws_db_subnet_group.redis.name
+  subnet_group_name    = aws_elasticache_subnet_group.redis.name
 
   cluster_id           = "cluster-redis"
   engine               = "redis"

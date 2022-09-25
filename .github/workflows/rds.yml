@@ -3,18 +3,20 @@
 name: RDS Continuous Deployment
 
 
-# on:
-#   workflow_run:
-#     workflows: ["VPC Continuous Deployment"]
-#     types:
-#       - completed
-
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_run:
+    workflows: ["VPC Continuous Deployment"]
+    types:
+      - completed
+
+
+
+# on:
+#   # Triggers the workflow on push or pull request events but only for the "main" branch
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
 
   # Allows you to run this workflow manually from the Actions tab
@@ -56,32 +58,32 @@ jobs:
 
 
 
-      - name: Plan
-        working-directory: RDS
-        run: |
-          terraform plan -var-file envs/virginia.tfvars 
+      # - name: Plan
+      #   working-directory: RDS
+      #   run: |
+      #     terraform plan -var-file envs/virginia.tfvars 
 
 
 
-      - name:   Destroy 
-        working-directory: RDS
-        run: |
-          terraform destroy	-var-file envs/virginia.tfvars --auto-approve
+      # - name:   Destroy 
+      #   working-directory: RDS
+      #   run: |
+      #     terraform destroy	-var-file envs/virginia.tfvars --auto-approve
 
       ###################################################################################################################################################
 
 
-      # - name: Plan
-      #   working-directory: RDS
-      #   run: |
-      #     terraform plan -var-file envs/virginia.tfvars
+      - name: Plan
+        working-directory: RDS
+        run: |
+          terraform plan -var-file envs/virginia.tfvars
 
 
 
-      # - name:   Apply
-      #   working-directory: RDS
-      #   run: |
-      #     terraform apply	-var-file envs/virginia.tfvars --auto-approve
+      - name:   Apply
+        working-directory: RDS
+        run: |
+          terraform apply	-var-file envs/virginia.tfvars --auto-approve
 
 
 
