@@ -54,42 +54,42 @@ jobs:
 
 
       ##################################################  VIRGINIA REGION  ############################################################################
+                                                  ##############################
 
 
-
-
-      - name: Plan
-        working-directory: REDIS
-        run: |
-          terraform plan -var-file envs/virginia.tfvars 
-
-
-
-      - name:   Destroy 
-        working-directory: REDIS
-        run: |
-          terraform destroy	-var-file envs/virginia.tfvars --auto-approve
-
-      ###################################################################################################################################################
 
       # - name: Plan
       #   working-directory: REDIS
       #   run: |
-      #     terraform plan -var-file envs/virginia.tfvars
+      #     terraform plan -var-file envs/virginia.tfvars 
 
 
 
-      # - name:   Apply
+      # - name:   Destroy 
       #   working-directory: REDIS
       #   run: |
-      #     terraform apply	-var-file envs/virginia.tfvars --auto-approve
+      #     terraform destroy	-var-file envs/virginia.tfvars --auto-approve
+
+      ###################################################################################################################################################
+
+      - name: Plan
+        working-directory: REDIS
+        run: |
+          terraform plan -var-file envs/virginia.tfvars
+
+
+
+      - name:   Apply
+        working-directory: REDIS
+        run: |
+          terraform apply	-var-file envs/virginia.tfvars --auto-approve
 
 
 
 
 
      ###################################################    OHIO REGION   #############################################################################
-
+                                               ######################################
 
       # - name: Plan
       #   working-directory: REDIS

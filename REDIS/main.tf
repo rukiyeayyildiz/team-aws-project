@@ -30,22 +30,25 @@ resource "aws_security_group_rule" "redis" {
 }
 
 resource "aws_elasticache_cluster" "redis" {
-  security_group_ids   = [aws_security_group.redis.id]
-  subnet_group_name    = aws_elasticache_subnet_group.redis.name
+  security_group_ids            = [aws_security_group.redis.id]
+  subnet_group_name             = aws_elasticache_subnet_group.redis.name
+  final_snapshot_identifier     = false
 
-  cluster_id           = "cluster-redis"
-  engine               = "redis"
-  node_type            = "cache.t3.micro"
-  num_cache_nodes      = 1
-  parameter_group_name = "default.redis3.2"
-  engine_version       = "3.2.10"
-  port                 = 6379
+  cluster_id                    = "cluster-redis"
+  engine                        = "redis"
+  node_type                     = "cache.t3.micro"
+  num_cache_nodes               = 1
+  parameter_group_name          = "default.redis3.2"
+  engine_version                = "3.2.10"
+  port                          = 6379
 }
+
+
 
 resource "aws_route53_record" "redis" {
   zone_id = var.zone_id
   name    = "redis.${var.domain_name}"
-  type    = "CNAME"
+  type    = "A"
   ttl     = 300
-  records = [aws_elasticache_cluster.redis.configuration_endpoint]
+  records = [aws_elasticache_cluster.redis.cluster_address]
 }

@@ -1,3 +1,3 @@
 output "redis" {
-  value = aws_elasticache_cluster.redis.configuration_endpoint
+  value = aws_elasticache_cluster.redis.cluster_address
 }
