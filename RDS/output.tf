@@ -13,7 +13,3 @@ output "reader2" {
 output "reader3" {
   value = aws_rds_cluster.wordpress_db.reader_endpoint
 }
-
-output "redis" {
-  value = aws_elasticache_cluster.redis.configuration_endpoint
-}
