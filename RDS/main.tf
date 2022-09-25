@@ -32,8 +32,8 @@ resource "aws_security_group_rule" "mysql" {
 
 
 resource "aws_security_group" "redis" {
-  name        = "mysql"
-  description = "Allow mysql inbound traffic"
+  name        = "redis"
+  description = "Allow cach inbound traffic"
   vpc_id      = data.terraform_remote_state.remote.outputs.vpc_id
 
   egress {
@@ -145,7 +145,7 @@ resource "aws_elasticache_cluster" "redis" {
 
   cluster_id           = "cluster-redis"
   engine               = "redis"
-  node_type            = "cache.t1.micro"
+  node_type            = "cache.t3.micro"
   num_cache_nodes      = 1
   parameter_group_name = "default.redis3.2"
   engine_version       = "3.2.10"
