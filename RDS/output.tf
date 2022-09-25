@@ -15,5 +15,5 @@ output "reader3" {
 }
 
 output "redis" {
-  value = aws_elasticache_cluster.redis.cluster_address
+  value = aws_elasticache_cluster.redis.configuration_endpoint
 }
