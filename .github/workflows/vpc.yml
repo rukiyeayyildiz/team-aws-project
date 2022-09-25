@@ -68,16 +68,16 @@ jobs:
 
 
 
-      - name: Plan
-        working-directory: VPC
-        run: |
-          terraform plan -var-file envs/virginia.tfvars 
+      # - name: Plan
+      #   working-directory: VPC
+      #   run: |
+      #     terraform plan -var-file envs/virginia.tfvars 
 
 
-      - name:   Apply
-        working-directory: VPC
-        run: |
-          terraform apply	-var-file envs/virginia.tfvars --auto-approve
+      # - name:   Apply
+      #   working-directory: VPC
+      #   run: |
+      #     terraform apply	-var-file envs/virginia.tfvars --auto-approve
 
 
 
@@ -86,16 +86,16 @@ jobs:
      ###################################################    OHIO REGION   #############################################################################
 
 
-      # - name: Plan
-      #   working-directory: VPC
-      #   run: |
-      #     terraform plan -var-file envs/ohio.tfvars 
+      - name: Plan
+        working-directory: VPC
+        run: |
+          terraform plan -var-file envs/ohio.tfvars 
 
 
-      # - name:   Destroy 
-      #   working-directory: VPC
-      #   run: |
-      #     terraform destroy	-var-file envs/ohio.tfvars --auto-approve
+      - name:   Destroy 
+        working-directory: VPC
+        run: |
+          terraform destroy	-var-file envs/ohio.tfvars --auto-approve
 
       ####################################################################################################################################################
 
