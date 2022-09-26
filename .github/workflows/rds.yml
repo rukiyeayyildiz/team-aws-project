@@ -3,11 +3,11 @@
 name: RDS Continuous Deployment
 
 
-# on:
-#   workflow_run:
-#     workflows: ["VPC Continuous Deployment"]
-#     types:
-#       - completed
+on:
+  workflow_run:
+    workflows: ["VPC Continuous Deployment"]
+    types:
+      - completed
 
 
 
@@ -129,17 +129,17 @@ jobs:
       ###################################################    OREGON REGION   #########################################################################
       ################################################################################################################################################
 
-      # - name: Plan
-      #   working-directory: RDS
-      #   run: |
-      #     terraform plan -var-file envs/oregon.tfvars 
+      - name: Plan
+        working-directory: RDS
+        run: |
+          terraform plan -var-file envs/oregon.tfvars 
 
 
 
-      # - name:   Apply 
-      #   working-directory: RDS
-      #   run: |
-      #     terraform apply	-var-file envs/oregon.tfvars --auto-approve
+      - name:   Apply 
+        working-directory: RDS
+        run: |
+          terraform apply	-var-file envs/oregon.tfvars --auto-approve
 
       #################################################################################################################################################
 
