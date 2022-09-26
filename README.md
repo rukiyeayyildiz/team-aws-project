@@ -1,6 +1,6 @@
 #                                                                 Team AWS Project
 
-This is the project for hosting wordpress
+This is the project for hosting wordpress on ASG with Aurora database claster including one writer and three readers
 
 In order to use this project:
 
@@ -35,5 +35,5 @@ After all configurations is done, please uncomment desired region apply block in
 
 <img width="1085" alt="Screenshot 2022-09-25 at 9 03 34 PM" src="https://user-images.githubusercontent.com/106113996/192179774-58df14c3-2824-41db-b850-cfe2825a1d9a.png">
 
-
+Commit changes, GitHub actions will be triggered and you will get a wordpress. Thank you! 
 
