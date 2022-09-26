@@ -53,26 +53,26 @@ resource "aws_rds_cluster_instance" "wordpress_db" {
   engine_version     = aws_rds_cluster.wordpress_db.engine_version
 }
 
-# resource "aws_rds_cluster_instance" "wordpress_db" {
-#   cluster_identifier = aws_rds_cluster.wordpress_db.id
-#   instance_class     = var.instance_class
-#   engine             = aws_rds_cluster.wordpress_db.engine
-#   engine_version     = aws_rds_cluster.wordpress_db.engine_version
-# }
+resource "aws_rds_cluster_instance" "wordpress_db" {
+  cluster_identifier = aws_rds_cluster.wordpress_db.id
+  instance_class     = var.instance_class
+  engine             = aws_rds_cluster.wordpress_db.engine
+  engine_version     = aws_rds_cluster.wordpress_db.engine_version
+}
 
-# resource "aws_rds_cluster_instance" "wordpress_db" {
-#   cluster_identifier = aws_rds_cluster.wordpress_db.id
-#   instance_class     = var.instance_class
-#   engine             = aws_rds_cluster.wordpress_db.engine
-#   engine_version     = aws_rds_cluster.wordpress_db.engine_version
-# }
+resource "aws_rds_cluster_instance" "wordpress_db" {
+  cluster_identifier = aws_rds_cluster.wordpress_db.id
+  instance_class     = var.instance_class
+  engine             = aws_rds_cluster.wordpress_db.engine
+  engine_version     = aws_rds_cluster.wordpress_db.engine_version
+}
 
-# resource "aws_rds_cluster_instance" "wordpress_db" {
-#   cluster_identifier = aws_rds_cluster.wordpress_db.id
-#   instance_class     = var.instance_class
-#   engine             = aws_rds_cluster.wordpress_db.engine
-#   engine_version     = aws_rds_cluster.wordpress_db.engine_version
-# }
+resource "aws_rds_cluster_instance" "wordpress_db" {
+  cluster_identifier = aws_rds_cluster.wordpress_db.id
+  instance_class     = var.instance_class
+  engine             = aws_rds_cluster.wordpress_db.engine
+  engine_version     = aws_rds_cluster.wordpress_db.engine_version
+}
 
 
 resource "aws_route53_record" "writer" {
