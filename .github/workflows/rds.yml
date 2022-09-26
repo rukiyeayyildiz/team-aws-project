@@ -52,59 +52,47 @@ jobs:
           terraform workspace select dev || terraform workspace new dev
          
 
-
+      #################################################################################################################################################
       ##################################################  VIRGINIA REGION  ############################################################################
-
-
+      #################################################################################################################################################
 
 
       # - name: Plan
       #   working-directory: RDS
       #   run: |
-      #     terraform plan -var-file envs/virginia.tfvars 
+      #     terraform plan -var-file envs/virginia.tfvars
 
 
 
-      # - name:   Destroy 
+      # - name:   Apply
       #   working-directory: RDS
       #   run: |
-      #     terraform destroy	-var-file envs/virginia.tfvars --auto-approve
+      #     terraform apply	-var-file envs/virginia.tfvars --auto-approve
+
+
+
 
       ###################################################################################################################################################
 
 
-      - name: Plan
-        working-directory: RDS
-        run: |
-          terraform plan -var-file envs/virginia.tfvars
-
-
-
-      - name:   Apply
-        working-directory: RDS
-        run: |
-          terraform apply	-var-file envs/virginia.tfvars --auto-approve
-
-
-
-
-
-     ###################################################    OHIO REGION   #############################################################################
-
-
       # - name: Plan
       #   working-directory: RDS
       #   run: |
-      #     terraform plan -var-file envs/ohio.tfvars 
+      #     terraform plan -var-file envs/virginia.tfvars
 
 
-      # - name:   Destroy 
+
+      # - name:   Destroy
       #   working-directory: RDS
       #   run: |
-      #     terraform destroy	-var-file envs/ohio.tfvars --auto-approve
+      #     terraform destroy	-var-file envs/virginia.tfvars --auto-approve
 
 
-      ##################################################################################################################################################
+
+
+     ##################################################################################################################################################
+     ###################################################    OHIO REGION   #############################################################################
+     ##################################################################################################################################################
 
       # - name: Plan
       #   working-directory: RDS
@@ -122,8 +110,24 @@ jobs:
 
 
 
-      ###################################################    OREGON REGION   #########################################################################
+      ##################################################################################################################################################
+      
+      # - name: Plan
+      #   working-directory: RDS
+      #   run: |
+      #     terraform plan -var-file envs/ohio.tfvars 
 
+
+      # - name:   Destroy 
+      #   working-directory: RDS
+      #   run: |
+      #     terraform destroy	-var-file envs/ohio.tfvars --auto-approve
+
+
+
+      ################################################################################################################################################
+      ###################################################    OREGON REGION   #########################################################################
+      ################################################################################################################################################
 
       # - name: Plan
       #   working-directory: RDS
@@ -132,10 +136,10 @@ jobs:
 
 
 
-      # - name:   Destroy 
+      # - name:   Apply 
       #   working-directory: RDS
       #   run: |
-      #     terraform destroy	-var-file envs/oregon.tfvars --auto-approve
+      #     terraform apply	-var-file envs/oregon.tfvars --auto-approve
 
       #################################################################################################################################################
 
@@ -147,7 +151,7 @@ jobs:
       #     terraform plan -var-file envs/oregon.tfvars       
 
 
-      # - name:   Apply
+      # - name:   Destroy
       #   working-directory: RDS
       #   run: |
-      #     terraform apply	-var-file envs/oregon.tfvars --auto-approve 
+      #     terraform destroy	-var-file envs/oregon.tfvars --auto-approve 
