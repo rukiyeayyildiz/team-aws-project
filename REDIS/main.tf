@@ -4,7 +4,7 @@ resource "aws_elasticache_subnet_group" "redis" {
   tags = var.tags
 }
 
-resource "aws_security_group" "redis" {
+resource "aws_security_group" "cach" {
   name        = "redis"
   description = "Allow cach inbound traffic"
   vpc_id      = data.terraform_remote_state.remote.outputs.vpc_id
@@ -20,7 +20,7 @@ resource "aws_security_group" "redis" {
   tags = var.tags
 }
 
-resource "aws_security_group_rule" "redis" {
+resource "aws_security_group_rule" "cach" {
   type              = "ingress"
   from_port         = 6379
   to_port           = 6379
@@ -29,8 +29,8 @@ resource "aws_security_group_rule" "redis" {
   security_group_id = aws_security_group.redis.id
 }
 
-resource "aws_elasticache_cluster" "redis" {
-  security_group_ids            = [aws_security_group.redis.id]
+resource "aws_elasticache_cluster" "wordpress_redis" {
+  security_group_ids            = [aws_security_group.cach.id]
   subnet_group_name             = aws_elasticache_subnet_group.redis.name
   final_snapshot_identifier     = false
 
@@ -45,10 +45,10 @@ resource "aws_elasticache_cluster" "redis" {
 
 
 
-resource "aws_route53_record" "redis" {
-  zone_id = var.zone_id
-  name    = "redis.${var.domain_name}"
-  type    = "A"
-  ttl     = 300
-  records = [aws_elasticache_cluster.redis.cluster_address]
-}
+# resource "aws_route53_record" "redis" {
+#   zone_id = var.zone_id
+#   name    = "redis.${var.domain_name}"
+#   type    = "A"
+#   ttl     = 300
+#   records = [aws_elasticache_cluster.redis.cluster_address]
+# }
