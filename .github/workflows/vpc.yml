@@ -50,24 +50,6 @@ jobs:
       #################################################################################################################################################
 
 
-      - name: Plan
-        working-directory: VPC
-        run: |
-          terraform plan -var-file envs/virginia.tfvars
-
-
-
-      - name:   Apply
-        working-directory: VPC
-        run: |
-          terraform apply	-var-file envs/virginia.tfvars --auto-approve
-
-
-
-
-      ###################################################################################################################################################
-
-
       # - name: Plan
       #   working-directory: VPC
       #   run: |
@@ -75,10 +57,28 @@ jobs:
 
 
 
-      # - name:   Destroy
+      # - name:   Apply
       #   working-directory: VPC
       #   run: |
-      #     terraform destroy	-var-file envs/virginia.tfvars --auto-approve
+      #     terraform apply	-var-file envs/virginia.tfvars --auto-approve
+
+
+
+
+      ###################################################################################################################################################
+
+
+      - name: Plan
+        working-directory: VPC
+        run: |
+          terraform plan -var-file envs/virginia.tfvars
+
+
+
+      - name:   Destroy
+        working-directory: VPC
+        run: |
+          terraform destroy	-var-file envs/virginia.tfvars --auto-approve
 
 
 
