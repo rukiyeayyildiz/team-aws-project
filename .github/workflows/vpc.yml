@@ -122,29 +122,29 @@ jobs:
       ###################################################    OREGON REGION   #########################################################################
       ################################################################################################################################################
 
-      - name: Plan
-        working-directory: VPC
-        run: |
-          terraform plan -var-file envs/oregon.tfvars 
+      # - name: Plan
+      #   working-directory: VPC
+      #   run: |
+      #     terraform plan -var-file envs/oregon.tfvars 
 
 
 
-      - name:   Apply 
-        working-directory: VPC
-        run: |
-          terraform apply	-var-file envs/oregon.tfvars --auto-approve
+      # - name:   Apply 
+      #   working-directory: VPC
+      #   run: |
+      #     terraform apply	-var-file envs/oregon.tfvars --auto-approve
 
       #################################################################################################################################################
 
 
 
-      # - name: Plan
-      #   working-directory: VPC
-      #   run: |
-      #     terraform plan -var-file envs/oregon.tfvars       
+      - name: Plan
+        working-directory: VPC
+        run: |
+          terraform plan -var-file envs/oregon.tfvars       
 
 
-      # - name:   Destroy
-      #   working-directory: VPC
-      #   run: |
-      #     terraform destroy	-var-file envs/oregon.tfvars --auto-approve     
+      - name:   Destroy
+        working-directory: VPC
+        run: |
+          terraform destroy	-var-file envs/oregon.tfvars --auto-approve     
