@@ -1,7 +1,7 @@
 data "terraform_remote_state" "remote" {
   backend = "s3"
   config = {
-    bucket = "malik-terraform-state-bucket"
+    bucket = "aws-team1"
     key    = "env:/dev/path/to/my/1.tfstate"
     region = "us-east-1"
     }
