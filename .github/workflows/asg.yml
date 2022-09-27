@@ -128,17 +128,17 @@ jobs:
       ###################################################    OREGON REGION   #########################################################################
       ################################################################################################################################################
 
-      # - name: Plan
-      #   working-directory: ASG
-      #   run: |
-      #     terraform plan -var-file envs/oregon.tfvars 
+      - name: Plan
+        working-directory: ASG
+        run: |
+          terraform plan -var-file envs/oregon.tfvars 
 
 
 
-      # - name:   Apply 
-      #   working-directory: ASG
-      #   run: |
-      #     terraform apply	-var-file envs/oregon.tfvars --auto-approve
+      - name:   Apply 
+        working-directory: ASG
+        run: |
+          terraform apply	-var-file envs/oregon.tfvars --auto-approve
 
       #################################################################################################################################################
 
