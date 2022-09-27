@@ -153,4 +153,4 @@ jobs:
       # - name:   Destroy
       #   working-directory: ASG
       #   run: |
-      #     terraform destroy	-var-file envs/oregon.tfvars --auto-approve
+      #     terraform destroy	-var-file envs/oregon.tfvars --auto-approve. 
